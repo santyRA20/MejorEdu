@@ -13,9 +13,30 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model User {
+/*model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   password  String
   createdAt DateTime @default(now())
+}*/
+
+model Presentation {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
 }
+
+model User {
+  id            Int            @id @default(autoincrement())
+  email         String         @unique
+  password      String
+  createdAt     DateTime       @default(now())
+  presentations Presentation[]
+}
+
+//enum para status
+
+//taks taks[] es para tareas
