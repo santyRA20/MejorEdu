@@ -27,6 +27,7 @@ model Presentation {
   createdAt DateTime @default(now())
   userId    Int
   user      User     @relation(fields: [userId], references: [id])
+  questions   Question[]
 }
 
 model User {
@@ -45,6 +46,21 @@ model Template {
   createdAt   DateTime @default(now())
 }
 
+model Question {
+  id              Int        @id @default(autoincrement())
+  text            String
+  presentationId  Int
+  presentation    Presentation @relation(fields: [presentationId], references: [id])
+  options         Option[]
+}
+
+model Option {
+  id         Int     @id @default(autoincrement())
+  text       String
+  correct    Boolean @default(false)
+  questionId Int
+  question   Question @relation(fields: [questionId], references: [id])
+}
 //enum para status
 
 //taks taks[] es para tareas
