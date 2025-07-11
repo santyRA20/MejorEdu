@@ -52,6 +52,7 @@ model Question {
   presentationId  Int
   presentation    Presentation @relation(fields: [presentationId], references: [id])
   options         Option[]
+  answers         Answer[]
 }
 
 model Option {
@@ -60,6 +61,21 @@ model Option {
   correct    Boolean @default(false)
   questionId Int
   question   Question @relation(fields: [questionId], references: [id])
+}
+
+model Answer {
+  id          Int       @id @default(autoincrement())
+  questionId  Int
+  question    Question  @relation(fields: [questionId], references: [id])
+  textAnswer  String?   // Preguntas abiertas
+  scaleAnswer Int?      // Preguntas de escala
+  createdAt   DateTime  @default(now())
+}
+
+enum QuestionType {
+  MULTIPLE_CHOICE
+  OPEN
+  SCALE
 }
 //enum para status
 

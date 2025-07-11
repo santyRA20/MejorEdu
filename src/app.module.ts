@@ -21,6 +21,7 @@ import { UserModule } from './user/user.module';
 import { PresentationModule } from './modules/presentation/presentation.module';
 import { TemplateModule } from './modules/template/template.module';
 import { QuestionModule } from './modules/question/question.module';
+import { AnswerModule } from './modules/answer/answer.module';
 
 @Module({
   imports: [
@@ -30,7 +31,8 @@ import { QuestionModule } from './modules/question/question.module';
     UserModule,
     PresentationModule,
     TemplateModule,
-    QuestionModule
+    QuestionModule,
+    AnswerModule
   ],
   /*
   providers: [
