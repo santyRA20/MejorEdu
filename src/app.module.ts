@@ -19,6 +19,8 @@ import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
 import { PrismaModule } from 'prisma/prisma.module';
 import { UserModule } from './user/user.module';
 import { PresentationModule } from './modules/presentation/presentation.module';
+import { TemplateModule } from './modules/template/template.module';
+import { QuestionModule } from './modules/question/question.module';
 
 @Module({
   imports: [
@@ -26,7 +28,9 @@ import { PresentationModule } from './modules/presentation/presentation.module';
     AuthModule,
     PrismaModule,
     UserModule,
-    PresentationModule
+    PresentationModule,
+    TemplateModule,
+    QuestionModule
   ],
   /*
   providers: [
