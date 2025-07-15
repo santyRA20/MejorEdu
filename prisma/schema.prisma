@@ -69,6 +69,7 @@ model Answer {
   question    Question  @relation(fields: [questionId], references: [id])
   textAnswer  String?   // Preguntas abiertas
   scaleAnswer Int?      // Preguntas de escala
+  status      AnswerStatus @default(PENDING)
   createdAt   DateTime  @default(now())
 }
 
@@ -76,6 +77,12 @@ enum QuestionType {
   MULTIPLE_CHOICE
   OPEN
   SCALE
+}
+
+enum AnswerStatus {
+  PENDING
+  APPROVED
+  HIDDEN
 }
 //enum para status
 
