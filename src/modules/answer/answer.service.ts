@@ -15,4 +15,25 @@ export class AnswerService {
       },
     });
   }
+  async approveAnswer(id: number) {
+    return this.prisma.answer.update({
+      where: { id },
+      data: { status: 'APPROVED' },
+    });
+  }
+
+  async hideAnswer(id: number) {
+    return this.prisma.answer.update({
+      where: { id },
+      data: { status: 'HIDDEN' },
+    });
+  }
+
+  async deleteAnswer(id: number) {
+    return this.prisma.answer.delete({
+      where: { id },
+    });
+  }
+
+  
 }
