@@ -20,6 +20,8 @@ import { PrismaModule } from 'prisma/prisma.module';
 import { UserModule } from './user/user.module';
 import { PresentationModule } from './modules/presentation/presentation.module';
 import { TemplateModule } from './modules/template/template.module';
+import { QuestionModule } from './modules/question/question.module';
+import { AnswerModule } from './modules/answer/answer.module';
 
 @Module({
   imports: [
@@ -28,7 +30,9 @@ import { TemplateModule } from './modules/template/template.module';
     PrismaModule,
     UserModule,
     PresentationModule,
-    TemplateModule
+    TemplateModule,
+    QuestionModule,
+    AnswerModule
   ],
   /*
   providers: [
