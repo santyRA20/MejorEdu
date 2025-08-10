@@ -1,16 +1,3 @@
-/*import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { AuthModule } from './auth/auth.module';
-
-@Module({
-  imports: [AuthModule, UserModule],
-  controllers: [AppController],
-  providers: [AppService],
-})
-export class AppModule {}*/
-
-
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
@@ -22,6 +9,8 @@ import { PresentationModule } from './modules/presentation/presentation.module';
 import { TemplateModule } from './modules/template/template.module';
 import { QuestionModule } from './modules/question/question.module';
 import { AnswerModule } from './modules/answer/answer.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -34,6 +23,8 @@ import { AnswerModule } from './modules/answer/answer.module';
     QuestionModule,
     AnswerModule
   ],
+  controllers: [AppController],  
+  providers: [AppService],        
   /*
   providers: [
     {

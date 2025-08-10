@@ -28,9 +28,9 @@ export class TemplateService {
         ],
       });
 
-      console.log(' Plantillas iniciales creadas');
+      //console.log(' Plantillas iniciales creadas');
     } else {
-      console.log(' Las plantillas ya existen');
+      //console.log(' Las plantillas ya existen');
     }
   }
 
