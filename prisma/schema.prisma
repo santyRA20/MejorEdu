@@ -33,6 +33,7 @@ model Presentation {
 model User {
   id            Int            @id @default(autoincrement())
   email         String         @unique
+  username      String?
   password      String
   createdAt     DateTime       @default(now())
   presentations Presentation[]
