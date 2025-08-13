@@ -6,6 +6,10 @@ import { CreateQuestionDto } from './dto/create-question.dto';
 export class QuestionService {
   constructor(private prisma: PrismaService) {}
 
+  /**
+   * Se crea la pregunta y sus opciones en un solo paso.
+   * Uso de select para controlar exactamente lo que respondemos.
+   */
   async create(dto: CreateQuestionDto) {
     return this.prisma.question.create({
       data: {
@@ -18,7 +22,19 @@ export class QuestionService {
           })),
         },
       },
-      include: { options: true },
+      select: {
+        id: true,
+        text: true,
+        presentationId: true,
+        options: {
+          select: {
+            id: true,
+            text: true,
+            correct: true,
+          },
+          orderBy: { id: 'asc' },
+        },
+      },
     });
   }
 }

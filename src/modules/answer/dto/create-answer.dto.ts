@@ -1,14 +1,27 @@
-import { IsInt, IsOptional, IsString } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateAnswerDto {
-  @IsInt()
+  @ApiProperty({ example: 12, description: 'ID de la pregunta' })
   questionId: number;
 
-  @IsOptional()
-  @IsString()
-  textAnswer?: string;
+  @ApiProperty({
+    example: 'Mi respuesta en texto',
+    description: 'Respuesta en texto (opcional)',
+    required: false,
+    nullable: true,
+  })
+  textAnswer?: string | null;
 
-  @IsOptional()
-  @IsInt()
-  scaleAnswer?: number;
+  @ApiProperty({
+    example: 4,
+    description: 'Respuesta tipo escala (opcional, ej. 1-5)',
+    required: false,
+    nullable: true,
+    minimum: 1,
+    maximum: 5,
+  })
+  scaleAnswer?: number | null;
 }
+/**
+ * Entrade de questionId, y opcionalmente textAnswer o scaleAnswer.
+ */

@@ -1,12 +1,15 @@
-import { IsString, IsInt } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreatePresentationDto {
-  @IsString()
+  @ApiProperty({ example: 'Mi presentación', description: 'Título visible' })
   title: string;
 
-  @IsString()
+  @ApiProperty({ example: 'Lo que trata le presentación', description: 'Cuerpo de la presentación' })
   content: string;
 
-  @IsInt()
+  @ApiProperty({ example: 1, description: 'ID del usuario autor' })
   userId: number;
 }
+/**
+ * Entrada de title, content y userId.
+ */

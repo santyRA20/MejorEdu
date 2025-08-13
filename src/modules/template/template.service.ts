@@ -4,12 +4,11 @@ import { PrismaService } from '../../../prisma/prisma.service';
 @Injectable()
 export class TemplateService {
   constructor(private prisma: PrismaService) {
-    this.seedTemplates(); 
+    this.seedTemplates();
   }
-
-  async seedTemplates() {
+  //Se crea seedTemplates() para insertar 2 plantillas si la tabla está vacía.
+  private async seedTemplates() {
     const count = await this.prisma.template.count();
-
     if (count === 0) {
       await this.prisma.template.createMany({
         data: [
@@ -27,14 +26,19 @@ export class TemplateService {
           },
         ],
       });
-
-      //console.log(' Plantillas iniciales creadas');
-    } else {
-      //console.log(' Las plantillas ya existen');
     }
   }
 
+  //Uso de select y orderBy
   async findAll() {
-    return this.prisma.template.findMany();
+    return this.prisma.template.findMany({
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        content: true,
+      },
+      orderBy: { id: 'asc' },
+    });
   }
 }
